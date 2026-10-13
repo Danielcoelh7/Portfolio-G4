@@ -28,4 +28,4 @@ Certifique-se de ter instalado em seu computador:
 - Passo a Passo
   1. Clone o repositório:
    ```bash
-   git clone [https://github.com/Danielcoelh7/Portfólio-G4.git](https://github.com/Danielcoelh7/Portfólio-G4.git)
+   git clone https://github.com/Danielcoelh7/Portfólio-G4.git](https://github.com/Danielcoelh7/Portfólio-G4.git)
