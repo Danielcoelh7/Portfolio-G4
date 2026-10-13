@@ -18,14 +18,40 @@ O projeto foi construído utilizando as seguintes tecnologias e ferramentas:
   * Front-end: HTML Estruturado com Iframe Dinâmico e Fetch API
   * Gestão e Versionamento:** Git, GitHub, Trello (Metodologia Scrum/Kanban).
 
-- Guia de Instalação e Execução
-Siga o passo a passo abaixo para clonar e rodar o projeto localmente em sua máquina:
-Pré-requisitos
-Certifique-se de ter instalado em seu computador:
-  * [Git](https://git-scm.com/)
-  * [Node.js](https://nodejs.org/) (versão 16.x ou superior recomendada)
-
-- Passo a Passo
-  1. Clone o repositório:
+- Como instalar e rodar o projeto
+Para testar o projeto no seu computador, siga os passos abaixo:
+ 1. Baixe o projeto:
    ```bash
-   git clone https://github.com/Danielcoelh7/Portfólio-G4.git](https://github.com/Danielcoelh7/Portfólio-G4.git)
+   git clone [link-do-repositorio]
+```
+
+ 2. Entre na pasta do projeto:
+```bash
+cd portfolio-g4
+```
+
+3. Instale os programas necessários (dependências):
+```bash
+npm install express cors
+```
+
+4. Ligue o servidor da API (Back-end):
+```bash
+node server.js
+```
+(O servidor vai ligar na porta 3000).
+
+
+5. Abrindo o site:
+Basta dar dois cliques no arquivo `index.html` para abrir a página no seu navegador.
+
+- Como usar a API
+A API foi feita em Node.js e serve para entregar os links dos vídeos.
+Rota principal: `GET /api/videos`
+* O que ela retorna (Exemplo):
+  ```json
+{
+  "daniel": "link-do-video-daniel",
+  "alexia": "link-do-video-alexia",
+  "thais": "link-do-video-thais"
+}
