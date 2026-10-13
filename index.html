@@ -3,151 +3,341 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfólio G4 - Vídeos</title>
+    <title>Portfólio G4 - Projeto Integrador</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary-color: #2e7d32; /* Verde IFSP escuro */
+            --secondary-color: #4caf50; /* Verde IFSP claro */
+            --bg-color: #f8f9fa;
+            --text-main: #2b2d42;
+            --text-muted: #6c757d;
+            --card-bg: #ffffff;
+        }
+
         body {
-            font-family: 'Courier New', Courier, monospace; /* Estilo terminal/tecnológico */
-            background-color: #0a0a0a; /* Fundo super escuro */
-            background-image: 
-                linear-gradient(rgba(255, 204, 0, 0.05) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 204, 0, 0.05) 1px, transparent 1px);
-            background-size: 40px 40px; /* Grade sutil ao fundo */
-            color: #e0e0e0;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             margin: 0;
-            padding: 2rem;
+            padding: 4rem 1rem;
             display: flex;
             flex-direction: column;
             align-items: center;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+
+        .header-wrapper {
+            text-align: center;
+            margin-bottom: 4rem;
         }
 
         h1 {
-            color: #ffcc00; /* Amarelo Batman */
-            margin-bottom: 2rem;
+            color: var(--text-main);
+            margin: 0;
             font-size: 2.8rem;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            text-shadow: 0 0 15px rgba(255, 204, 0, 0.6); /* Efeito neon/brilho */
-            font-family: 'Arial Black', Impact, sans-serif;
+            font-weight: 700;
+            letter-spacing: -1px;
         }
 
-        .videos-container {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+            font-weight: 400;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
             width: 100%;
-            max-width: 1200px;
+            max-width: 1100px;
         }
 
-        .video-card {
-            background-color: #141414; /* Cinza muito escuro */
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid #333;
-            border-bottom: 4px solid #ffcc00; /* Destaque amarelo na base */
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+        /* Estilo dos Cartões Principais */
+        .profile-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 2.5rem 2rem;
             text-align: center;
-            flex: 1;
-            min-width: 300px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04), 0 10px 15px rgba(0, 0, 0, 0.02);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--primary-color);
         }
 
-        .video-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 24px rgba(255, 204, 0, 0.15);
-            border-color: #ffcc00;
+        .profile-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08), 0 20px 25px rgba(0, 0, 0, 0.04);
         }
 
-        .video-card h3 {
-            margin-top: 0;
-            margin-bottom: 1.5rem;
-            color: #ffcc00;
-            font-weight: bold;
+        .profile-card h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .member-role {
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-family: 'Arial', sans-serif;
+            margin-bottom: 2rem;
         }
 
-        button {
-            background-color: #000;
-            color: #ffcc00;
-            border: 2px solid #ffcc00;
-            padding: 10px 24px;
-            border-radius: 4px;
+        .btn-view {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            border: 1.5px solid #e2e8f0;
+            padding: 12px 24px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            border-radius: 8px;
             cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            text-transform: uppercase;
+            width: 100%;
+            transition: all 0.2s ease;
+        }
+
+        .btn-view:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background-color: #f0fdf4;
+        }
+
+        /* --- ESTILOS DO MODAL (POP-UP CENTRADO) --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
             transition: all 0.3s ease;
-            font-family: 'Courier New', Courier, monospace;
+            z-index: 1000;
+            padding: 1rem;
         }
 
-        button:hover {
-            background-color: #ffcc00;
-            color: #000;
-            box-shadow: 0 0 15px rgba(255, 204, 0, 0.8); /* Brilho no hover */
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
 
-        button:active {
+        .modal-content {
+            background: var(--card-bg);
+            width: 100%;
+            max-width: 800px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             transform: scale(0.95);
+            transition: transform 0.3s ease;
+            position: relative;
         }
 
-        iframe {
-            border-radius: 4px;
-            box-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
-            margin-top: 1rem;
-            background-color: #050505;
-            border: 1px solid #333;
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid #f1f5f9;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: var(--text-main);
+        }
+
+        .btn-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #94a3b8;
+            cursor: pointer;
+            transition: color 0.2s;
+            padding: 0;
+            line-height: 1;
+        }
+
+        .btn-close:hover {
+            color: #ef4444;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Proporção 16:9 para vídeos */
+            background-color: #000;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .iframe-container iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            border: none;
+        }
+
+        .modal-description {
+            margin-top: 1.5rem;
+            background-color: #f8fafc;
+            padding: 1.2rem 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .modal-description p {
+            margin: 0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: #475569;
+        }
+
+        .modal-description strong {
+            color: var(--text-main);
         }
     </style>
 </head>
 <body>
 
-    <h1>Apresentação - Portfólio G4</h1>
+    <div class="header-wrapper">
+        <h1>Portfólio G4</h1>
+        <div class="subtitle">Projeto Integrador - Desenvolvimento de Sistemas Web</div>
+    </div>
     
-    <div class="videos-container">
-        <!-- Coluna do Daniel -->
-        <div class="video-card">
-            <h3>Vídeo Back-end - Daniel</h3>
-            <button onclick="document.getElementById('video1').hidden = false; this.style.display = 'none';">Clique aqui</button>
-            <iframe id="video1" src="" width="100%" height="300" frameborder="0" allowfullscreen hidden></iframe>
+    <div class="cards-container">
+        <!-- Cartão Daniel -->
+        <div class="profile-card">
+            <h3>Daniel Souza</h3>
+            <div class="member-role">Back-end Lead</div>
+            <button class="btn-view" onclick="abrirModal('daniel')">Visualizar Apresentação</button>
         </div>
         
-        <!-- Coluna da Alexia -->
-        <div class="video-card">
-            <h3>Vídeo Front-end - Alexia</h3>
-            <button onclick="document.getElementById('video2').hidden = false; this.style.display = 'none';">Clique aqui</button>
-            <iframe id="video2" src="" width="100%" height="300" frameborder="0" allowfullscreen hidden></iframe>
+        <!-- Cartão Alexia -->
+        <div class="profile-card">
+            <h3>Alexia Léa</h3>
+            <div class="member-role">Front-end Lead</div>
+            <button class="btn-view" onclick="abrirModal('alexia')">Visualizar Apresentação</button>
         </div>
         
-        <!-- Coluna da Thaís -->
-        <div class="video-card">
-            <h3>Vídeo Documentação - Thaís</h3>
-            <button onclick="document.getElementById('video3').hidden = false; this.style.display = 'none';">Clique aqui</button>
-            <iframe id="video3" src="" width="100%" height="300" frameborder="0" allowfullscreen hidden></iframe>
+        <!-- Cartão Thaís -->
+        <div class="profile-card">
+            <h3>Thaís de Souza</h3>
+            <div class="member-role">QA & Documentação</div>
+            <button class="btn-view" onclick="abrirModal('thais')">Visualizar Apresentação</button>
         </div>
     </div>
 
-    <!-- Lógica de Integração Front-end / Back-end -->
-    <script>
-        async function carregarVideos() {
-            try {
-                // O Front-end faz o pedido à tua API Node.js local
-                const resposta = await fetch('http://localhost:3000/api/videos');
-                const dados = await resposta.json();
+    <!-- ESTRUTURA DO MODAL -->
+    <div id="videoModal" class="modal-overlay" onclick="fecharModalFora(event)">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Apresentação</h2>
+                <button class="btn-close" onclick="fecharModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="iframe-container">
+                    <iframe id="modalVideo" src="" allowfullscreen></iframe>
+                </div>
+                <div class="modal-description">
+                    <p id="modalText"></p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-                // O JavaScript injeta os links da tua API nos iframes do HTML
-                document.getElementById('video1').src = dados.daniel;
-                document.getElementById('video2').src = dados.alexia;
-                document.getElementById('video3').src = dados.thais;
-                
-                console.log("Sucesso: Os vídeos foram carregados da API do Daniel!");
+    <script>
+        // Variável global para guardar os links vindos da API
+        let linksDeVideo = { daniel: "", alexia: "", thais: "" };
+
+        // Dados profissionais de cada integrante
+        const dadosPerfis = {
+            daniel: {
+                titulo: "Apresentação: Daniel Souza",
+                texto: "<strong>Habilidades:</strong> Desenvolvimento Back-end, Node.js, Express e criação de APIs REST.<br><br>Cursou o Ensino Médio integrado ao Técnico em Informática no Instituto Federal de São Paulo (IFSP) durante 4 anos, focando-se na lógica de servidores e estruturas de dados."
+            },
+            alexia: {
+                titulo: "Apresentação: Alexia Léa",
+                texto: "<strong>Habilidades:</strong> Desenvolvimento Front-end, Design de Interfaces (UI), HTML, CSS e Integração web.<br><br>Cursou o Ensino Médio integrado ao Técnico em Informática no Instituto Federal de São Paulo (IFSP) durante 4 anos, com foco na experiência do utilizador e arquitetura visual."
+            },
+            thais: {
+                titulo: "Apresentação: Thaís de Souza",
+                texto: "<strong>Habilidades:</strong> Qualidade de Software (QA), Documentação Técnica, Markdown e Regras de Negócio.<br><br>Cursou o Ensino Médio integrado ao Técnico em Informática no Instituto Federal de São Paulo (IFSP) durante 4 anos, garantindo a padronização e o rigor técnico dos projetos."
+            }
+        };
+
+        // 1. Busca os links da API do Back-end
+        async function carregarVideosDaAPI() {
+            try {
+                const resposta = await fetch('http://localhost:3000/api/videos');
+                linksDeVideo = await resposta.json();
+                console.log("Links da API carregados com sucesso!");
             } catch (erro) {
-                console.error("Erro na integração. Verifica se o Back-end está a rodar na porta 3000.", erro);
+                console.error("Erro ao contactar a API. O servidor Node está a rodar?", erro);
             }
         }
 
-        carregarVideos();
+        // 2. Lógica para Abrir o Modal
+        function abrirModal(membro) {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('modalVideo');
+            const titulo = document.getElementById('modalTitle');
+            const texto = document.getElementById('modalText');
+
+            // Preenche os dados
+            titulo.innerHTML = dadosPerfis[membro].titulo;
+            texto.innerHTML = dadosPerfis[membro].texto;
+            
+            // Injeta o link recebido da API no iframe
+            if (linksDeVideo[membro]) {
+                iframe.src = linksDeVideo[membro];
+            } else {
+                iframe.src = "";
+            }
+
+            // Exibe o modal
+            modal.classList.add('active');
+        }
+
+        // 3. Lógica para Fechar o Modal
+        function fecharModal() {
+            const modal = document.getElementById('videoModal');
+            const iframe = document.getElementById('modalVideo');
+            
+            modal.classList.remove('active');
+            
+            // Remove o link para cortar o som imediatamente
+            setTimeout(() => {
+                iframe.src = "";
+            }, 300);
+        }
+
+        // Fecha o modal se o utilizador clicar na área escura (fora do vídeo)
+        function fecharModalFora(evento) {
+            if (evento.target.id === 'videoModal') {
+                fecharModal();
+            }
+        }
+
+        // Inicia o fetch assim que a página carrega
+        carregarVideosDaAPI();
     </script>
 </body>
 </html>
