@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Vídeos do Google Drive com Botão</title>
+</head>
+<body>
+    
+    <table width="100%" border="0" cellpadding="10">
+        <tr>
+            <!-- Coluna do Daniel -->
+            <td align="left" width="33%" valign="top">
+                <h3>Vídeo Esquerda - Daniel</h3>
+                <button onclick="document.getElementById('video1').hidden = false; this.hidden = true;">Clique aqui</button>
+                <br><br>
+                <iframe id="video1" src="" width="100%" height="300" frameborder="0" allowfullscreen hidden></iframe>
+            </td>
+            
+            <!-- Coluna da Alexia -->
+            <td align="center" width="33%" valign="top">
+                <h3>Vídeo Centro - Alexia</h3>
+                <button onclick="document.getElementById('video2').hidden = false; this.hidden = true;">Clique aqui</button>
+                <br><br>
+                <iframe id="video2" src="" width="100%" height="300" frameborder="0" allowfullscreen hidden></iframe>
+            </td>
+            
+            <!-- Coluna da Thaís -->
+            <td align="right" width="33%" valign="top">
+                <h3>Vídeo Direita - Thaís</h3>
+                <button onclick="document.getElementById('video3').hidden = false; this.hidden = true;">Clique aqui</button>
+                <br><br>
+                <iframe id="video3" src="" width="100%" height="300" frameborder="0" allowfullscreen hidden></iframe>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Lógica de Integração Front-end / Back-end (Sprint 3) -->
+    <script>
+        async function carregarVideos() {
+            try {
+                // O Front-end faz o pedido à tua API Node.js local
+                const resposta = await fetch('http://localhost:3000/api/videos');
+                const dados = await resposta.json();
+
+                // O JavaScript injeta os links da tua API nos iframes do HTML
+                document.getElementById('video1').src = dados.daniel;
+                document.getElementById('video2').src = dados.alexia;
+                document.getElementById('video3').src = dados.thais;
+                
+                console.log("Sucesso: Os vídeos foram carregados da API do Daniel!");
+            } catch (erro) {
+                console.error("Erro na integração. Verifica se o Back-end está a rodar na porta 3000.", erro);
+            }
+        }
+
+        // Executa a função automaticamente assim que a página é aberta
+        carregarVideos();
+    </script>
+</body>
+</html>
