@@ -12,7 +12,7 @@ app.use(express.json());
 app.get('/api/videos', (req, res) => {
     // Lógica de negócio: Dados que serão enviados para a interface
     const linksDosVideos = {
-        daniel: "COLE_O_LINK_DO_DRIVE_AQUI_DANIEL",
+        daniel: "https://drive.google.com/file/d/11HQFByboQxFSij-8pr3A9xp1JHkX03oZ/view?usp=sharing",
         alexia: "COLE_O_LINK_DO_DRIVE_AQUI_ALEXIA",
         thais: "COLE_O_LINK_DO_DRIVE_AQUI_THAIS"
     };
