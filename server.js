@@ -13,7 +13,7 @@ app.get('/api/videos', (req, res) => {
     // Lógica de negócio: Dados que serão enviados para a interface
     const linksDosVideos = {
         daniel: "https://drive.google.com/file/d/11HQFByboQxFSij-8pr3A9xp1JHkX03oZ/preview",
-        alexia: "COLE_O_LINK_DO_DRIVE_AQUI_ALEXIA",
+        alexia: "https://drive.google.com/file/d/1pVN17-iJOT5cJwpbLpqYKwo0n_jxhtj7/preview",
         thais: "https://drive.google.com/file/d/1LJLQ4N_XW-0bdysQCvNCIh4OhG-BY2s7/preview"
     };
 
