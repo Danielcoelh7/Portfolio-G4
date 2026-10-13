@@ -22,12 +22,12 @@ O projeto foi construído utilizando as seguintes tecnologias e ferramentas:
 Para testar o projeto no seu computador, siga os passos abaixo:
  1. Baixe o projeto:
    ```bash
-   git clone [link-do-repositorio]
+   git clone https://github.com/Danielcoelh7/Portfolio-G4.git
 ```
 
  2. Entre na pasta do projeto:
 ```bash
-cd portfolio-g4
+cd Portfolio-g4
 ```
 
 3. Instale os programas necessários (dependências):
