@@ -2,39 +2,133 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Vídeos do Google Drive com Botão</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio G4 - Vídeos</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace; /* Estilo terminal/tecnológico */
+            background-color: #0a0a0a; /* Fundo super escuro */
+            background-image: 
+                linear-gradient(rgba(255, 204, 0, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 204, 0, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px; /* Grade sutil ao fundo */
+            color: #e0e0e0;
+            margin: 0;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #ffcc00; /* Amarelo Batman */
+            margin-bottom: 2rem;
+            font-size: 2.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 0 0 15px rgba(255, 204, 0, 0.6); /* Efeito neon/brilho */
+            font-family: 'Arial Black', Impact, sans-serif;
+        }
+
+        .videos-container {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .video-card {
+            background-color: #141414; /* Cinza muito escuro */
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #333;
+            border-bottom: 4px solid #ffcc00; /* Destaque amarelo na base */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            flex: 1;
+            min-width: 300px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(255, 204, 0, 0.15);
+            border-color: #ffcc00;
+        }
+
+        .video-card h3 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            color: #ffcc00;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        button {
+            background-color: #000;
+            color: #ffcc00;
+            border: 2px solid #ffcc00;
+            padding: 10px 24px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        button:hover {
+            background-color: #ffcc00;
+            color: #000;
+            box-shadow: 0 0 15px rgba(255, 204, 0, 0.8); /* Brilho no hover */
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        iframe {
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(255, 204, 0, 0.2);
+            margin-top: 1rem;
+            background-color: #050505;
+            border: 1px solid #333;
+        }
+    </style>
 </head>
 <body>
-    
-    <table width="100%" border="0" cellpadding="10">
-        <tr>
-            <!-- Coluna do Daniel -->
-            <td align="left" width="33%" valign="top">
-                <h3>Vídeo Esquerda - Daniel</h3>
-                <button onclick="document.getElementById('video1').hidden = false; this.hidden = true;">Clique aqui</button>
-                <br><br>
-                <iframe id="video1" src="" width="100%" height="300" frameborder="0" allowfullscreen hidden></iframe>
-            </td>
-            
-            <!-- Coluna da Alexia -->
-            <td align="center" width="33%" valign="top">
-                <h3>Vídeo Centro - Alexia</h3>
-                <button onclick="document.getElementById('video2').hidden = false; this.hidden = true;">Clique aqui</button>
-                <br><br>
-                <iframe id="video2" src="" width="100%" height="300" frameborder="0" allowfullscreen hidden></iframe>
-            </td>
-            
-            <!-- Coluna da Thaís -->
-            <td align="right" width="33%" valign="top">
-                <h3>Vídeo Direita - Thaís</h3>
-                <button onclick="document.getElementById('video3').hidden = false; this.hidden = true;">Clique aqui</button>
-                <br><br>
-                <iframe id="video3" src="" width="100%" height="300" frameborder="0" allowfullscreen hidden></iframe>
-            </td>
-        </tr>
-    </table>
 
-    <!-- Lógica de Integração Front-end / Back-end (Sprint 3) -->
+    <h1>Apresentação - Portfólio G4</h1>
+    
+    <div class="videos-container">
+        <!-- Coluna do Daniel -->
+        <div class="video-card">
+            <h3>Vídeo Back-end - Daniel</h3>
+            <button onclick="document.getElementById('video1').hidden = false; this.style.display = 'none';">Clique aqui</button>
+            <iframe id="video1" src="" width="100%" height="300" frameborder="0" allowfullscreen hidden></iframe>
+        </div>
+        
+        <!-- Coluna da Alexia -->
+        <div class="video-card">
+            <h3>Vídeo Front-end - Alexia</h3>
+            <button onclick="document.getElementById('video2').hidden = false; this.style.display = 'none';">Clique aqui</button>
+            <iframe id="video2" src="" width="100%" height="300" frameborder="0" allowfullscreen hidden></iframe>
+        </div>
+        
+        <!-- Coluna da Thaís -->
+        <div class="video-card">
+            <h3>Vídeo Documentação - Thaís</h3>
+            <button onclick="document.getElementById('video3').hidden = false; this.style.display = 'none';">Clique aqui</button>
+            <iframe id="video3" src="" width="100%" height="300" frameborder="0" allowfullscreen hidden></iframe>
+        </div>
+    </div>
+
+    <!-- Lógica de Integração Front-end / Back-end -->
     <script>
         async function carregarVideos() {
             try {
@@ -53,7 +147,6 @@
             }
         }
 
-        // Executa a função automaticamente assim que a página é aberta
         carregarVideos();
     </script>
 </body>
