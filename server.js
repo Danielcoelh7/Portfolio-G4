@@ -14,7 +14,7 @@ app.get('/api/videos', (req, res) => {
     const linksDosVideos = {
         daniel: "https://drive.google.com/file/d/11HQFByboQxFSij-8pr3A9xp1JHkX03oZ/preview",
         alexia: "COLE_O_LINK_DO_DRIVE_AQUI_ALEXIA",
-        thais: "COLE_O_LINK_DO_DRIVE_AQUI_THAIS"
+        thais: "https://drive.google.com/file/d/1LJLQ4N_XW-0bdysQCvNCIh4OhG-BY2s7/preview"
     };
 
     // Retorna a resposta em formato JSON
